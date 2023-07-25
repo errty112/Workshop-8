@@ -1,10 +1,19 @@
 **The University of Melbourne**
 # COMP30019 – Graphics and Interaction
 
-## Workshop 7
+## Workshop 8: Vertex Shaders
 
+<!-- <p align="center">
+  <img src="Gifs/game.gif">
+</p> -->
 
-# Introduction:
+<p align="center">
+  <a href="https://comp30019.github.io/Workshop-8-Solution/" alt="Play Online">
+    <img src="https://img.shields.io/static/v1?label=Play%20Solution&message=comp30019.github.io/Workshop-8-Solution/&color=blue&logo=unity" />
+  </a>
+</p>
+
+### Introduction
 
 In this workshop you will continue learning about shaders, with a 
 particular emphasis on vertex shaders. Vertex shaders are useful for 
