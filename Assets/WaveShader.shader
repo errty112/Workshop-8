@@ -19,6 +19,7 @@ Shader "Unlit/WaveShader"
 			#include "UnityCG.cginc"
 
 			uniform sampler2D _MainTex;	
+			//uniform float4 _Time;
 
 			struct vertIn
 			{
@@ -35,14 +36,22 @@ Shader "Unlit/WaveShader"
 			// Implementation of the vertex shader
 			vertOut vert(vertIn v)
 			{
-				// Displace the original vertex in model space
-				float4 displacement = float4(0.0f, 0.0f, 0.0f, 0.0f);
-				v.vertex += displacement;
+				// Transform vertex position from model space to world space
+                float4 worldPos = mul(UNITY_MATRIX_M, v.vertex);
 
-				vertOut o;
-				o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
-				o.uv = v.uv;
-				return o;
+                // Transform vertex position from world space to view space
+                float4 viewPos = mul(UNITY_MATRIX_V, worldPos);
+
+                // Displace the y-coordinate of the vertex in view space based on its x-coordinate
+                viewPos.y += sin(viewPos.x);
+
+                // Transform vertex position from view space to projection space
+                float4 projPos = mul(UNITY_MATRIX_P, viewPos);
+
+                vertOut o;
+                o.vertex = projPos;
+                o.uv = v.uv;
+                return o;
 			}
 			
 			// Implementation of the fragment shader
