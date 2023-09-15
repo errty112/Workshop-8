@@ -6,7 +6,7 @@ public class RotateObject : MonoBehaviour
 {
     public float rotationSpeedY = 0.0f; // Adjust the speed of rotation in degrees per second
     public float rotationSpeedX = 0.0f;
-    public float rotationSpeedZ = 0.0f;
+    
 
     // Update is called once per frame
     void Update()
@@ -16,6 +16,6 @@ public class RotateObject : MonoBehaviour
 
         transform.Rotate(Vector3.right * rotationSpeedX * Time.deltaTime);
 
-        transform.Rotate(Vector3.forward * rotationSpeedZ * Time.deltaTime);
+        
     }
 }
